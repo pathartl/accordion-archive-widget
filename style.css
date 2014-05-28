@@ -1,0 +1,7 @@
+li.archive-accordion-year:hover {
+	cursor: pointer;
+}
+
+li.archive-accordion-year ul {
+	display: none;
+}
