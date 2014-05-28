@@ -82,11 +82,11 @@ class WP_Widget_Accordion_Archives extends WP_Widget {
 		$i = 0;
 		foreach ($years as $year) {
 
-		?><li class="archive-accordion-year"><?php
+		?><li class="archive-accordion-year"><a><?php
 
 			echo $year;
 
-			?><ul><?php
+			?></a><ul><?php
 
 			foreach ($archives as $archive) {
 
