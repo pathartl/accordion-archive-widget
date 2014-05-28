@@ -46,7 +46,6 @@ class WP_Widget_Accordion_Archives extends WP_Widget {
 
 ?>
 		<ul>
-		<pre>
 <?php
 		/**
 		 * Filter the arguments for the Archives widget.
@@ -108,7 +107,6 @@ class WP_Widget_Accordion_Archives extends WP_Widget {
 		}
 
 ?>
-		</pre>
 		</ul>
 <?php
 
