@@ -1,12 +1,12 @@
 <?php
 /**
  * Plugin Name: Accordion Archive Widget
- * Plugin URI: http://pathartl.me/accordian-archive-widget
+ * Plugin URI: http://github.com/pathartl/accordion-archive-widget
  * Description: An archive widget that collapses the standard archive widget into an accordion by year
  * Version: 1.0
  * Author: Pat Hartl
  * Author URI: http://pathartl.me
- * License: CC
+ * License: CC0 1.0
  */
 
 function accordion_archives_js() {
@@ -35,7 +35,6 @@ class WP_Widget_Accordion_Archives extends WP_Widget {
 
 	function widget( $args, $instance ) {
 		extract($args);
-		$c = ! empty( $instance['count'] ) ? '1' : '0';
 
 		/** This filter is documented in wp-includes/default-widgets.php */
 		$title = apply_filters( 'widget_title', empty($instance['title'] ) ? __( 'Accordion Archives' ) : $instance['title'], $instance, $this->id_base );
@@ -58,7 +57,6 @@ class WP_Widget_Accordion_Archives extends WP_Widget {
 		 */
 		$archives = strip_tags(wp_get_archives( apply_filters( 'widget_accordion_archives_args', array(
 			'type'            => 'monthly',
-			'show_post_count' => $c,
 			'format'          => 'custom',
 			'echo'            => 0,
 			'after'           => ','
@@ -115,22 +113,17 @@ class WP_Widget_Accordion_Archives extends WP_Widget {
 
 	function update( $new_instance, $old_instance ) {
 		$instance = $old_instance;
-		$new_instance = wp_parse_args( (array) $new_instance, array( 'title' => '', 'count' => 0) );
+		$new_instance = wp_parse_args( (array) $new_instance, array( 'title' => '') );
 		$instance['title'] = strip_tags($new_instance['title']);
-		$instance['count'] = $new_instance['count'] ? 1 : 0;
 
 		return $instance;
 	}
 
 	function form( $instance ) {
-		$instance = wp_parse_args( (array) $instance, array( 'title' => '', 'count' => 0) );
+		$instance = wp_parse_args( (array) $instance, array( 'title' => '') );
 		$title = strip_tags($instance['title']);
-		$count = $instance['count'] ? 'checked="checked"' : '';
 ?>
 		<p><label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> <input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo esc_attr($title); ?>" /></p>
-		<p>
-			<input class="checkbox" type="checkbox" <?php echo $count; ?> id="<?php echo $this->get_field_id('count'); ?>" name="<?php echo $this->get_field_name('count'); ?>" /> <label for="<?php echo $this->get_field_id('count'); ?>"><?php _e('Show post counts'); ?></label>
-		</p>
 <?php
 	}
 }
