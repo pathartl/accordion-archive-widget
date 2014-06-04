@@ -31,6 +31,11 @@ I may implement this if people request it, but I'm happy where it's at now.
 
 I've put this widget at the bottom of my website. You can check it out at http://pathartl.me/#footer
 
+== Screenshots ==
+
+1. This is an image of the collapsed accordion.
+2. This is an image of the accordion expanded revealing the months.
+
 == Changelog ==
 
 = 1.0 =
