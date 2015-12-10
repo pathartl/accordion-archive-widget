@@ -89,7 +89,7 @@ class WP_Widget_Accordion_Archives extends WP_Widget {
 			foreach ($archives as $archive) {
 
 				$archive = explode(' ', $archive);
-				if ($archive[1] == $year) {
+				if (!empty($archive[1]) && $archive[1] == $year) {
 					echo '<li class="archive-accordion-month"><a href="' . 
 					// Get the archive link
 					get_month_link($year, date("m", strtotime($archive[0] . '-' . $year))) . 
